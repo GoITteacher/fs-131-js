@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/users.css" />
+    <title>Users</title>
+  </head>
+  <body>
+    <div class="header horizont-box">
+      <form class="card form-inline search-form js-create-form">
+        <div class="form-group">
+          First name: <input type="text" name="firstName" />
+        </div>
+        <div class="form-group">
+          Last name: <input type="text" name="lastName" />
+        </div>
+        <div class="form-group">Major: <input type="text" name="major" /></div>
+        <div class="form-group">
+          Cohort year: <input type="number" name="cohortYear" />
+        </div>
+        <div class="form-group">
+          GPA: <input type="number" name="gpa" step="0.01" />
+        </div>
+        <div class="form-group">
+          Enrolled: <input type="checkbox" name="enrolled" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Створити</button>
+      </form>
+
+      <form class="card form-inline search-form js-update-form">
+        <div class="form-group">Id: <input type="text" name="userId" /></div>
+        <div class="form-group">
+          First name: <input type="text" name="firstName" />
+        </div>
+        <div class="form-group">
+          Last name: <input type="text" name="lastName" />
+        </div>
+        <div class="form-group">Major: <input type="text" name="major" /></div>
+        <div class="form-group">
+          Cohort year: <input type="number" name="cohortYear" />
+        </div>
+        <div class="form-group">
+          GPA: <input type="number" name="gpa" step="0.01" />
+        </div>
+        <div class="form-group">
+          Enrolled: <input type="checkbox" name="enrolled" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Оновити</button>
+      </form>
+
+      <form class="card form-inline search-form js-reset-form">
+        <div class="form-group">Id: <input type="text" name="userId" /></div>
+        <div class="form-group">
+          First name: <input type="text" name="firstName" />
+        </div>
+        <div class="form-group">
+          Last name: <input type="text" name="lastName" />
+        </div>
+        <div class="form-group">Major: <input type="text" name="major" /></div>
+        <div class="form-group">
+          Cohort year: <input type="number" name="cohortYear" />
+        </div>
+        <div class="form-group">
+          GPA: <input type="number" name="gpa" step="0.01" />
+        </div>
+        <div class="form-group">
+          Enrolled: <input type="checkbox" name="enrolled" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Перезаписати</button>
+      </form>
+    </div>
+
+    <ul class="news-list js-user-list">
+      <li class="card user-item" data-id="${id}">
+        <div class="user-photo-placeholder" aria-label="User photo placeholder">
+          <span>FL</span>
+        </div>
+        <div class="user-card-body">
+          <div class="user-card-header">
+            <div>
+              <h3 class="user-title">First Name Last Name</h3>
+              <p class="user-major">Computer Science</p>
+            </div>
+            <span class="user-status">Enrolled</span>
+          </div>
+
+          <div class="user-meta">
+            <p>
+              <span>Cohort</span>
+              <strong>2026</strong>
+            </p>
+            <p>
+              <span>GPA</span>
+              <strong>4.0</strong>
+            </p>
+          </div>
+
+          <button class="btn button user-delete-button">Delete</button>
+        </div>
+      </li>
+
+      <li class="card user-item" data-id="${id}">
+        <div class="user-photo-placeholder" aria-label="User photo placeholder">
+          <span>FL</span>
+        </div>
+        <div class="user-card-body">
+          <div class="user-card-header">
+            <div>
+              <h3 class="user-title">First Name Last Name</h3>
+              <p class="user-major">Computer Science</p>
+            </div>
+            <span class="user-status">Enrolled</span>
+          </div>
+
+          <div class="user-meta">
+            <p>
+              <span>Cohort</span>
+              <strong>2026</strong>
+            </p>
+            <p>
+              <span>GPA</span>
+              <strong>4.0</strong>
+            </p>
+          </div>
+
+          <button class="btn button user-delete-button">Delete</button>
+        </div>
+      </li>
+
+      <li class="card user-item" data-id="${id}">
+        <div class="user-photo-placeholder" aria-label="User photo placeholder">
+          <span>FL</span>
+        </div>
+        <div class="user-card-body">
+          <div class="user-card-header">
+            <div>
+              <h3 class="user-title">First Name Last Name</h3>
+              <p class="user-major">Computer Science</p>
+            </div>
+            <span class="user-status">Enrolled</span>
+          </div>
+
+          <div class="user-meta">
+            <p>
+              <span>Cohort</span>
+              <strong>2026</strong>
+            </p>
+            <p>
+              <span>GPA</span>
+              <strong>4.0</strong>
+            </p>
+          </div>
+
+          <button class="btn button user-delete-button">Delete</button>
+        </div>
+      </li>
+    </ul>
+
+    <script src="../js/users.js" type="module"></script>
+  </body>
+</html>
