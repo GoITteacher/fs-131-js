@@ -8,22 +8,43 @@
  * - Незмінність рядків
  */
 
-const firstName = "Chelsy";
-const lastName = "Emerald";
+//!=========================================
+
+// const firstName = 'Ruslan';
+// const lastName = 'Romanenko';
+// const fullName = firstName + ' ' + lastName; // 'Ruslan Romanenko'
 // console.log(fullName);
 
-const quantity = 15;
-const orderMsg = "You ordered ??? bots";
+// const fullName = `${firstName}-----${lastName}`;
+// console.log(fullName);
+
+//!=========================================
+
+// const quantity = 99;
+// const orderMsg = `You ordered ${quantity} bots`;
 // console.log(orderMsg);
 
-const message = "This string is 28 chars long";
-// console.log(message);
+//!=========================================
+
+// const message = 'This string is 28 chars long';
+// console.log(message.length);
+
+//!=========================================
+
+// const str = 'tes';
+// const firstLetter = str[0];
+// const lastLetter = str[str.length - 1];
+
+// console.log(firstLetter);
+// console.log(lastLetter);
+
+//!=========================================
 
 /**
  * Склади фразу за допомогою шаблонних рядків
  * A has B bots in stock, де A, B - змінні вставлені в рядок.
  */
-const companyName = "Cyberdyne Systems";
+const companyName = 'Cyberdyne Systems';
 const repairBots = 150;
 const defenceBots = 50;
 // const msg = ;
