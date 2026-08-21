@@ -32,3 +32,82 @@
 
 // const bmi = calcBMI("88,3", "1.75");
 // console.log(bmi); // 28.8
+
+//!=========================================
+
+// function myDay() {
+//   console.log('1)');
+//   console.log('2)');
+//   console.log('3)');
+//   console.log('4)');
+//   console.log('5)');
+//   console.log('6)');
+// }
+
+// myDay();
+// myDay();
+// myDay();
+// myDay();
+// myDay();
+
+//!=========================================
+
+// function sayHello(firstName, lastName) {
+//   console.log(
+//     `Hello ${firstName} ${lastName}. Vasya from Dnipro. Vasya likes movie`,
+//   );
+// }
+
+// sayHello('Vasya', 'Potapenko');
+// sayHello()
+
+//!=========================================
+
+// function sum(hello, world) {
+//   console.log(hello + world);
+// }
+
+// sum(1, 2);
+// sum(2, 6);
+// sum(3, 9);
+// sum(4, 7);
+
+//!=========================================
+
+// function myDay(food) {
+//   console.log('Прокинутись');
+//   console.log('Почистити зуби');
+//   console.log('Поснідати');
+//   console.log('Піти до школи');
+//   console.log(`Зїсти ${food}`);
+//   console.log('Повернутись зі школи');
+//   console.log('Зробити уроки');
+//   console.log('відпочивати');
+//   console.log('Спати\n\n\n\n');
+// }
+
+// myDay()
+
+// myDay('яблуко');
+// myDay('бутерброд');
+// myDay('банани');
+// myDay();
+// myDay('бутерброди', 100);
+
+// Math.round(12)
+
+//!=========================================
+
+// function sum(x, y) {
+//   return (x + y) * 2;
+// }
+
+// const result = sum(2, 3) + sum(3, 4);
+
+//!=========================================
+
+// function round(x, y) {
+//   return Math.round(x) + Math.round(y);
+// }
+// const result = round(10.4, 11.9);
+// console.log(result);
