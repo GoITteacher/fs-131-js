@@ -5,18 +5,35 @@
  * Посилальна рівність (referential equality)
  */
 
-const a = [1, 2, 3];
-const b = a;
+// const a = ['Vasya', 'Kolya', 'Petro'];
+// const b = a;
 
-console.log("a", a);
-console.log("b", b);
+// console.log(a === b);
 
-a[0] = 500;
+//!=========================================
 
-console.log("a", a);
-console.log("b", b);
+// const a = [1, 2, 3];
+// const b = [1, 2, 3];
 
-console.log(a === b);
+// console.log(a === b);
 
-console.log([] === []);
-console.log([1, 2, 3] === [1, 2, 3]);
+//!=========================================
+
+// let x = 10;
+
+// const arr = [1, 2, 3];
+
+// arr[0] = x;
+
+// x = 25;
+
+// console.log(arr);
+
+//!=========================================
+
+// let x = 10;
+// let y = 25;
+// y = x;
+// x = 50;
+
+//!=========================================
