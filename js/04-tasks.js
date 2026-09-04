@@ -1,51 +1,69 @@
-/**
- * Напиши функцію logItems(items), яка отримує масив та використовує цикл,
- * який для кожного елемента масиву буде виводити в консоль повідомлення у
- * форматі <номер елемента> - <значення елемента>. Нумерація елементів
- * повинна починатися з 1.
- *
- * Наприклад для першого елемента масиву ['Mango', 'Poly', 'Ajax'] з
- * індексом 0 буде виведено 1 - Mango, а для індексу 2 виведе 3 - Ajax.
+console.log(x);
+
+const x = 10;
+
+//!=========================================
+/*
+1. Напиши функцію яка приймає масив рядочків. Потрібно змінити кожен елемент
+   масиву наступним чином - якщо довжина рядочку менша за 6 до привести рядок до
+   нижнього регістру, в іншому випадку привести до верхнього регістру. 
+   */
+
+// ['hello', 'test', 'test message', 'world']
+
+// function task1(array) {
+//   for (let i = 0; i < array.length; i++) {
+//     if (array[i].length < 6) {
+//       array[i] = array[i].toLowerCase();
+//     } else {
+//       array[i] = array[i].toUpperCase();
+//     }
+//   }
+
+//   return array;
+// }
+
+// const res = task1(['hello', 'test', 'test message', 'world']);
+// console.log(res);
+
+//!=========================================
+/* 
+2. Напиши функцію, яка приймає довільну кількість чисел і повертає новий масив, що містить
+   лише непарні числа. 
+   */
+
+// function task2() {
+//   const items = Array.from(arguments);
+//   const res = [];
+
+//   for (const item of items) {
+//     if (item % 2 !== 0) {
+//       res.push(item);
+//     }
+//   }
+
+//   return res;
+// }
+
+//!=========================================
+/* 
+3. Напиши функцію, яка приймає довільну кількість чисел і повертає новий масив, де кожне
+   число помножене на індекс, за яким воно знаходиться в масиві. */
+// [5,1,2,4,5,6];
+// [0,1,4,12, 20, 30]
+
+function task3() {
+  const items = Array.from(arguments);
+  const res = [];
+
+  for (let i = 0; i < items.length; i++) {
+    res.push(items[i] * i);
+  }
+
+  return res;
+}
+//!=========================================
+/* 
+4. Напиши функцію, яка приймає довільну кількість чисел і повертає новий масив, що містить
+   лише числа, які діляться на 3.
  */
-
-function logItems(items) {}
-
-logItems(["Mango", "Poly", "Ajax"]);
-logItems(["🍎", "🍇", "🍑", "🍌", "🍋"]);
-
-/**
- * Напиши функцію printInfo(names, phones) яка виводить
- * у консоль ім'я та телефонний номер користувача. У параметри
- * names та phones будуть передані рядки імен та телефонних номерів,
- * розділені комами. Порядковий номер імен та телефонів у рядках
- * вказують на відповідність. Кількість імен та телефонів
- * гарантовано однакова.
- */
-
-function printInfo(names, phones) {}
-
-printInfo(
-  "Jacob,William,Solomon,Artemis",
-  "89001234567,89001112233,890055566377,890055566300"
-);
-
-/**
- * Напиши функцію formatTime(minutes) яка переведе значення
- * minutes (кількість хвилин) у рядок у форматі годин
- * та хвилин HH:MM.
- */
-
-const hours = Math.floor(totalMinutes / 60);
-const minutes = totalMinutes % 60;
-console.log(hours);
-console.log(minutes);
-
-const doubleDigitHours = String(hours).padStart(2, 0);
-const doubleDigitMinutes = String(minutes).padStart(2, 0);
-console.log(`${doubleDigitHours}:${doubleDigitMinutes}`);
-
-function formatTime(minutes) {}
-
-console.log(formatTime(70)); // "01:10"
-console.log(formatTime(450)); // "07:30"
-console.log(formatTime(1441)); // "24:01"
