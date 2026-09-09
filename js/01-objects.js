@@ -10,23 +10,157 @@
  * - Додавання властивостей
  */
 
-const playlist = {
-  name: "My amazing playlist",
-  rating: 5,
-  tracks: ["track-1", "track-2", "track-3"],
-  isFavourite: true,
-};
+//!=========================================
 
-/**
- * -----------------------------------
- */
-const propertyName = "tracks";
+// const item = ['Iphone', 13, 1000, 1500, 16, 512, 2, 2]
 
-/**
- * -----------------------------------
- */
-function foo(values) {
-  console.log(values);
-  console.log(values.a);
-  console.log(values.b);
-}
+// const item = {
+//   title: 'Iphone',
+//   price: 1000,
+//   model: 13,
+//   amount: 1500,
+//   storage: 512,
+//   camera: 2,
+// };
+
+//!=========================================
+
+// const obj = {
+//   height: 15,
+//   width: 10,
+//   color: 'black',
+// };
+
+// const obj = {
+//   title: 'Powerbank',
+//   price: 2000,
+//   power: 20000,
+//   desc: '',
+// };
+
+// const user = {
+//   email: 'testuser@gmail.com',
+//   password: 'testpassword',
+//   fullName: 'Vasya Klopotenko',
+//   phoneNumber: 'awdawdawd',
+//   lang: ['en', 'uk', 'pl'],
+//   isAdult: true,
+//   isAdmin: false,
+//   age: 25,
+// };
+
+// console.log(user.fullName);
+
+//!=========================================
+
+// const user = {
+//   email: 'testuser@gmail.com',
+//   password: 'testpassword',
+//   fullName: 'Vasya Klopotenko',
+//   phoneNumber: 'awdawdawd',
+//   lang: ['en', 'uk', 'pl'],
+//   isAdult: true,
+//   isAdmin: false,
+//   age: 25,
+
+//   address: {
+//     country: 'Ukraine',
+//     city: 'Dnipro',
+//     street: 'Shevhenko',
+//     location: {
+//       lat: 0.123134234123123,
+//       lon: 0.123134234123123,
+//     },
+//   },
+// };
+
+// console.log(user.address.location.lon);
+
+//!=========================================
+// const user = {
+//   email: 'testuser@gmail.com',
+//   password: 'testpassword',
+//   fullName: 'Vasya Klopotenko',
+//   phoneNumber: 'awdawdawd',
+//   lang: ['en', 'uk', 'pl'],
+//   isAdult: true,
+//   isAdmin: false,
+//   age: 25,
+
+//   address: {
+//     country: 'Ukraine',
+//     city: 'Dnipro',
+//     street: 'Shevhenko',
+//     location: {
+//       lat: 0.123134234123123,
+//       lon: 0.123134234123123,
+//     },
+//   },
+// };
+
+// user['email'];
+// user['password'];
+// user['fullname'];
+
+// user['address'].location.lat;
+// user.address['location'].lon;
+// user['address']['location']['lon'];
+
+// user.address.location.lon;
+
+//!=========================================
+
+// const user = {
+//   email: 'testuser@gmail.com',
+//   password: 'testpassword',
+//   fullName: 'Vasya Klopotenko',
+//   phoneNumber: 'awdawdawd',
+//   lang: ['en', 'uk', 'pl'],
+//   isAdult: true,
+//   isAdmin: false,
+//   age: 25,
+
+//   address: {
+//     country: 'Ukraine',
+//     city: 'Dnipro',
+//     street: 'Shevhenko',
+//     location: {
+//       lat: 0.123134234123123,
+//       lon: 0.123134234123123,
+//     },
+//   },
+// };
+
+//!=========================================
+
+// const product = {
+//   title: 'Android',
+//   price: 2000,
+//   amount: 100,
+// };
+
+// product.price += 500;
+// product.title = 'Samsung';
+
+// console.log(product);
+
+//!=========================================
+
+// const product = {
+//   title: 'Android',
+//   price: 2000,
+//   amount: 100,
+// };
+
+// product.test = 'Hello world';
+// product.discount = 10;
+
+// console.log(product.address);
+
+// product.address = {
+//   location: 'test',
+// };
+
+// console.log(product);
+
+//!=========================================
