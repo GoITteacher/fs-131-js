@@ -6,15 +6,47 @@
  * - Зміна за посиланням
  */
 
-const playlist = {
-  name: "My amazing playlist",
-  rating: 5,
-  tracks: ["track-1", "track-2", "track-3"],
-  changeName(newName) {},
-  addTrack(track) {},
-  updateRating(newRating) {},
-  getTrackCount() {},
-};
+//!=========================================
+
+// const dog = {
+//   name: 'Lord',
+//   breed: 'spaniel',
+//   age: 2,
+
+//   sayWoof() {
+//     console.log('woof woof');
+//   },
+//   sleep() {
+//     console.log('Zzzzzz');
+//   },
+//   eat() {
+//     console.log('ням ням ням');
+//   },
+// };
+
+//!=========================================
+
+// const playlist = {
+//   name: 'My amazing playlist',
+//   rating: 5,
+//   tracks: ['track-1', 'track-2', 'track-3'],
+
+//   changeName(newName) {
+//     this.name = newName;
+//   },
+
+//   addTrack(track) {
+//     this.tracks.push(track);
+//   },
+
+//   updateRating(newRating) {
+//     this.rating = newRating;
+//   },
+
+//   getTrackCount() {
+//     return this.tracks.length;
+//   },
+// };
 
 // console.log(playlist.getTrackCount());
 
@@ -28,3 +60,37 @@ const playlist = {
 
 // playlist.updateRating(4);
 // console.log(playlist);
+
+//!=========================================
+
+// const user = {
+//   fullName: 'Vasya Ivanenko',
+//   age: 25,
+//   phoneNumber: '+38012312512',
+//   email: 'user@gmail.com',
+
+//   showFullName() {
+//     console.log(this.fullName);
+//   },
+
+//   showAge() {
+//     console.log(`Age: ${this.age}`);
+//   },
+
+//   showPhoneNumber() {
+//     console.log(`Phone Number: ${this.phoneNumber}`);
+//   },
+
+//   showEmail() {
+//     console.log(`Email: ${this.email}`);
+//   },
+
+//   showInfo() {
+//     this.showFullName();
+//     this.showAge();
+//     this.showPhoneNumber();
+//     this.showEmail();
+//   },
+// };
+
+// user.showInfo();
