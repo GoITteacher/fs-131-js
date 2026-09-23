@@ -10,7 +10,7 @@
  * Глобальний контекст
  */
 function foo() {
-  console.log("foo -> this", this);
+  console.log('foo -> this', this);
 }
 
 foo();
@@ -20,43 +20,43 @@ foo();
  */
 
 const user = {
-  tag: "Mango",
+  tag: 'Mango',
   showTag() {
-    console.log("showTag -> this", this);
+    console.log('showTag -> this', this);
   },
 };
 
 user.showTag();
 
 /**
- * Контекст методу об'єкта, но объявлена как внешняя функция.
+ * Контекст методу об'єкта, але оголошено як зовнішню функцію.
  */
 
 function showTag() {
-  console.log("showTag -> this", this);
-  console.log("showTag -> this.tag", this.tag);
+  console.log('showTag -> this', this);
+  console.log('showTag -> this.tag', this.tag);
 }
 
 showTag();
 
 const mango = {
-  tag: "Mango",
+  tag: 'Mango',
 };
 
 mango.showUserTag = showTag;
-console.log("mango", mango);
+console.log('mango', mango);
 
 mango.showUserTag();
 
 /**
- * Вызов без контекста, но объявлена как метод объекта.
+ * Виклик без контексту, але оголошено як метод об'єкта.
  */
 
 const poly = {
-  tag: "Poly",
+  tag: 'Poly',
   showTag() {
-    console.log("showTag -> this", this);
-    console.log("showTag -> this.tag", this.tag);
+    console.log('showTag -> this', this);
+    console.log('showTag -> this.tag', this.tag);
   },
 };
 
@@ -67,14 +67,14 @@ const outerShowTag = poly.showTag;
 outerShowTag();
 
 /**
- * Контекст в callback-функциях
+ * Контекст у callback-функціях
  */
 
 const jacob = {
-  tag: "Jacob",
+  tag: 'Jacob',
   showTag() {
-    console.log("showTag -> this", this);
-    console.log("showTag -> this.tag", this.tag);
+    console.log('showTag -> this', this);
+    console.log('showTag -> this.tag', this.tag);
   },
 };
 
