@@ -7,48 +7,123 @@
  * - Ланцюжки прототипів
  */
 
-const animal = {
-  legs: 4,
+//!=========================================
+// const x = 10;
+// const y = 'Hello world';
+// const t = true;
+
+// x.toString();
+// y.toString();
+// t.toString();
+
+// const arr = [1, 2, 3];
+
+// console.log(arr);
+
+//!=========================================
+// const data = {
+//   t1: 100,
+//   t2: 200,
+//   t3: 300,
+// };
+
+// const obj1 = {
+//   x1: 10,
+//   x2: 20,
+//   __proto__: data,
+// };
+
+// console.log(obj1);
+// console.log(obj1.t3);
+
+// console.log(obj1.toString());
+
+//!=========================================
+
+// const userPrototype = {
+//   showName() {
+//     console.log(this.name);
+//   },
+//   showAge() {
+//     console.log(this.age);
+//   },
+//   showInfo() {
+//     this.showName();
+//     this.showAge();
+//   },
+// };
+
+// const user1 = Object.create(userPrototype);
+// const user2 = Object.create(userPrototype);
+// const user3 = Object.create(userPrototype);
+
+// const user1 = {
+//   name: 'Vasya',
+//   age: 25,
+//   __proto__: userPrototype,
+// };
+
+// console.log(user1);
+
+// user1.showName();
+
+//!=========================================
+// const objC = { c: 'objC prop' };
+
+// const objB = Object.create(objC);
+// objB.b = 'objB prop';
+
+// const objA = Object.create(objB);
+// objA.a = 'objA prop';
+
+// console.log(objA);
+// console.log(objB);
+// console.log(objC);
+
+// console.log(objA.hasOwnProperty('a'));
+// console.log(objA.a);
+
+// console.log(objA.hasOwnProperty('b'));
+// console.log(objA.b);
+
+// console.log(objA.hasOwnProperty('c'));
+// console.log(objA.c);
+
+// console.log(objA.hasOwnProperty('x'));
+// console.log(objA.x);
+
+//!=========================================
+
+const userPrototype = {
+  balance: 100,
+  showName() {
+    console.log(this.name);
+  },
+  showAge() {
+    console.log(this.age);
+  },
+  showInfo() {
+    this.showName();
+    this.showAge();
+  },
 };
 
-const dog = Object.create(animal);
-dog.name = "Mango";
+const user1 = {
+  name: 'Vasya',
+  age: 25,
+  __proto__: userPrototype,
+};
 
-console.log(dog);
-console.log(dog.name);
-console.log(dog.legs);
-console.log(dog.hasOwnProperty("name"));
-console.log(dog.hasOwnProperty("legs"));
+console.log(user1.name);
+console.log(user1.balance);
 
-for (const key in dog) {
-  if (dog.hasOwnProperty(key)) {
-    console.log(key); // "name"
-  }
+console.log(user1.hasOwnProperty('balance'));
+console.log(user1.hasOwnProperty('name'));
+
+user1.__proto__.__proto__.test = 25;
+
+for (const key in user1) {
+  console.log(key);
 }
 
-/**
- * ----------------------------------------
- */
-const objC = { c: "objC prop" };
-
-const objB = Object.create(objC);
-objB.b = "objB prop";
-
-const objA = Object.create(objB);
-objA.a = "objA prop";
-
-console.log(objA);
-console.log(objB);
-console.log(objC);
-
-console.log(objA.hasOwnProperty("a"));
-console.log(objA.a);
-
-console.log(objA.hasOwnProperty("b"));
-console.log(objA.b);
-
-console.log(objA.hasOwnProperty("c"));
-console.log(objA.c);
-
-console.log(objA.hasOwnProperty("x"));
-console.log(objA.x);
+console.log(user1);

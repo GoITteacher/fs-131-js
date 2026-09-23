@@ -5,82 +5,91 @@
  * - Глобальний контекст
  * - Контекст методу об'єкта
  */
+//!=========================================
 
 /**
  * Глобальний контекст
  */
-function foo() {
-  console.log('foo -> this', this);
-}
 
-foo();
+// function foo() {
+//   console.log('foo -> this', this);
+// }
 
+// foo();
+
+//!=========================================
 /**
  * Контекст методу об'єкта
  */
 
-const user = {
-  tag: 'Mango',
-  showTag() {
-    console.log('showTag -> this', this);
-  },
-};
+// const user = {
+//   tag: 'Mango',
+//   showTag() {
+//     console.log(this);
+//   },
+// };
 
-user.showTag();
+// borys.showTag();
+// user.showTag();
 
+//!=========================================
 /**
  * Контекст методу об'єкта, але оголошено як зовнішню функцію.
  */
 
-function showTag() {
-  console.log('showTag -> this', this);
-  console.log('showTag -> this.tag', this.tag);
-}
+// function showTag() {
+//   console.log('showTag -> this', this);
+//   console.log('showTag -> this.tag', this.tag);
+// }
 
-showTag();
+// const mango = {
+//   tag: 'Mango',
+//   copy: showTag,
+// };
 
-const mango = {
-  tag: 'Mango',
-};
+// mango.copy();
 
-mango.showUserTag = showTag;
-console.log('mango', mango);
-
-mango.showUserTag();
+//!=========================================
 
 /**
  * Виклик без контексту, але оголошено як метод об'єкта.
  */
 
-const poly = {
-  tag: 'Poly',
-  showTag() {
-    console.log('showTag -> this', this);
-    console.log('showTag -> this.tag', this.tag);
-  },
-};
+// const poly = {
+//   tag: 'Poly',
+//   showTag() {
+//     console.log(this);
+//   },
+// };
 
-poly.showTag();
+// poly.showTag();
 
-const outerShowTag = poly.showTag;
+// const copy = poly.showTag;
 
-outerShowTag();
+// copy();
 
+//!=========================================
 /**
  * Контекст у callback-функціях
  */
 
-const jacob = {
-  tag: 'Jacob',
-  showTag() {
-    console.log('showTag -> this', this);
-    console.log('showTag -> this.tag', this.tag);
-  },
-};
+// const jacob = {
+//   tag: 'Jacob',
+//   showTag() {
+//     console.log(this);
+//   },
+// };
 
-function invokeAction(action) {
-  console.log(action);
-  action();
-}
+// jacob.showTag();
 
-invokeAction(jacob.showTag);
+// function invokeAction(copy) {
+//   const borys = {
+//     test: copy,
+//   };
+
+//   borys.test();
+// }
+
+// invokeAction(jacob.showTag);
+
+//!=========================================
