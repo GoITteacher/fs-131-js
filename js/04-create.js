@@ -1,20 +1,30 @@
 /*
  * Створення та додавання елементів
  */
+//!=========================================
+// const pElem = document.createElement('p');
+// container.append(pElem);
 
+// pElem.style.width = '100px';
+// pElem.classList.add('green');
+// pElem.textContent = 'Hello World';
+
+// const container = document.querySelector('.js-hero');
+
+//!=========================================
 /*
  * Створюємо заголовок
  */
-const titleEl = document.createElement('h1');
+// const titleEl = document.createElement('h1');
 
 /*
  * Створюємо зображення
  * https://cdn.pixabay.com/photo/2018/07/26/07/45/valais-3562988_1280.jpg
  * valais-alpine-mountains-glacier
  */
-const imageEl = document.createElement('img');
+// const imageEl = document.createElement('img');
 
-const heroEl = document.querySelector('.hero');
+// const heroEl = document.querySelector('.hero');
 
 /*
  * Створюємо та додаємо новий пункт меню

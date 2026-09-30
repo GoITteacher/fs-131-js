@@ -91,4 +91,34 @@ const transactionHistory = [
   },
 ];
 
-const tableEl = document.querySelector('.js-transaction-table');
+//!=========================================
+
+function itemTemplate(item) {
+  let myClass = '';
+
+  if (item.type === 'deposit') {
+    myClass = 'deposit';
+  } else if (item.type === 'withdrawal') {
+    myClass = 'withdraw';
+  }
+
+  return `<tr class="table-item ${myClass}">
+          <td>${item.id}</td>
+          <td>${item.amount}</td>
+          <td>${item.date}</td>
+          <td>${item.business}</td>
+          <td>${item.name}</td>
+          <td>${item.type}</td>
+          <td>${item.account}</td>
+        </tr>`;
+}
+
+function itemsTemplate(items) {
+  return items.map(itemTemplate).join('');
+}
+
+const markup = itemsTemplate(transactionHistory);
+
+const tableEl = document.querySelector('.js-transaction-table tbody');
+
+tableEl.innerHTML = markup;
