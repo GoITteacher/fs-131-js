@@ -4,9 +4,30 @@
  * - addEventListener
  * - removeEventListener
  *
- * Натискаючи на кнопку "Click me" змусь
- * червоний квадратик зміщуватись на 50px по діагоналі
  */
 
-const clickMe = document.querySelector('.js-click');
-const box = document.querySelector('.js-box');
+/* 
+    - onTargetEvent - onRegisterBtnClick
+    - handleTargetEvent - handleMyBtnClick
+    - targetEventHandler - myBtnClickHandler
+*/
+
+//!=========================================
+// const clickMe = document.querySelector('.js-click');
+
+// clickMe.addEventListener('click', handleMyBtnClick);
+
+// function handleMyBtnClick(e) {
+//   console.log('HELLO HELLO');
+// }
+//!=========================================
+
+// clickMe.removeEventListener('click', handleMyBtnClick);
+
+//!=========================================
+
+// const clickMe = document.querySelector('.js-click');
+
+// clickMe.addEventListener('click', e => {
+//   console.log(e);
+// });

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,17 +10,22 @@
   <body>
     <p><a href="index.html">Go back</a></p>
 
-    <form class="js-form feedback-form">
-      <input
-        type="text"
-        name="email"
-        class="form-input"
-        placeholder="Email"
-        required
-      />
+    <!-- <form class="js-form feedback-form">
+      <fieldset>
+        <label for="">
+          <input
+            type="text"
+            name="email"
+            class="form-input"
+            placeholder="Email"
+            required
+          />
+        </label>
+      </fieldset>
+
       <input
         type="password"
-        name="password"
+        name="my-password"
         class="form-input"
         placeholder="Password"
         required
@@ -28,12 +33,22 @@
       <textarea
         cols="30"
         rows="10"
-        name="comment"
+        name="user-comment"
         class="form-textarea"
         placeholder="Comment"
       ></textarea>
       <button class="form-button">Submit</button>
+    </form> -->
+
+    <form class="js-book-form">
+      <input type="text" name="title" />
+      <input type="text" name="author" />
+      <input type="number" name="price" />
+      <input type="text" name="genre" />
+      <button>Create Book</button>
     </form>
+
+    <ul class="js-book-list"></ul>
 
     <script src="./js/03-forms.js"></script>
   </body>

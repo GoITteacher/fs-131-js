@@ -161,7 +161,68 @@ const cars = [
   },
 ];
 
+//!=========================================
 const refs = {
   form: document.querySelector('.js-form'),
   container: document.querySelector('.js-list'),
 };
+
+//!=========================================
+
+/* 
+{
+    id: 1,
+    title: 'Toyota Camry',
+    price: 28312,
+    img: 'https://source.unsplash.com/1920x1280/?random=1&car,toyota',
+    onSale: false,
+    type: 'supercar',
+  }
+*/
+
+refs.form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  const formData = new FormData(refs.form);
+  const title = formData.get('query');
+  const type = formData.get('type');
+
+  const res = cars.filter(car => {
+    const isValidTitle = car.title.includes(title); // true
+
+    const isValidType = car.type === type; // false
+
+    const isAllTypes = type === 'all';
+    return isValidTitle && (isValidType || isAllTypes);
+  });
+
+  const markup = carsTemplate(res);
+  refs.container.innerHTML = markup;
+
+  refs.form.reset();
+});
+
+//!=========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  const markup = carsTemplate(cars);
+  refs.container.innerHTML = markup;
+});
+
+//!=========================================
+
+function carTemplate(car) {
+  const onSale = car.onSale ? 'on-sale' : '';
+  return ` <li class="car-item ${onSale}">
+        <img src="https://picsum.photos/720?random=${car.id}" alt="" />
+        <div class="car-info">
+          <h3>${car.title}</h3>
+          <p>Type: ${car.type}</p>
+          <p>Price: ${car.price}$</p>
+        </div>
+      </li>`;
+}
+
+function carsTemplate(cars) {
+  return cars.map(carTemplate).join('');
+}
