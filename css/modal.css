@@ -1,9 +1,3 @@
-body.show-modal .backdrop {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: initial;
-}
-
 .backdrop {
   display: flex;
   justify-content: center;
@@ -14,11 +8,6 @@ body.show-modal .backdrop {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
-
-  pointer-events: none;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 200ms ease-in-out, visibility 200ms ease-in-out;
 }
 
 .modal {
@@ -34,4 +23,9 @@ body.show-modal .backdrop {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
   cursor: pointer;
+  background-color: red;
+}
+
+.hidden {
+  display: none;
 }

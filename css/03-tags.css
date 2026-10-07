@@ -55,3 +55,12 @@
   border: none;
   cursor: pointer;
 }
+
+.active {
+  background-color: teal;
+  color: white;
+}
+
+.active * {
+  color: white;
+}

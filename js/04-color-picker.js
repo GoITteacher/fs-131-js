@@ -1,5 +1,6 @@
 let colorPalette = [];
-const LENGTH = 5;
+
+const LENGTH = 100;
 
 function createPaletteItems() {
   const items = [];
@@ -34,7 +35,7 @@ function hexToRgb(hex) {
 }
 
 createPaletteItems();
-////////////////////////////////////////////////////////////////////////////
+//!=========================================
 
 const refs = {
   itemList: document.querySelector('.js-colors-box'),
@@ -43,10 +44,67 @@ const refs = {
   backdropElem: document.querySelector('.js-backdrop'),
 };
 
-////////////////////////////////////////////////////////////////////////////
+//!=========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  const markup = colorsTemplate(colorPalette);
+  refs.itemList.innerHTML = markup;
+});
+
+refs.btnReloadColor.addEventListener('click', () => {
+  createPaletteItems();
+  const markup = colorsTemplate(colorPalette);
+  refs.itemList.innerHTML = markup;
+});
+
+//!=========================================
+
+refs.itemList.addEventListener('click', e => {
+  if (e.target.nodeName !== 'BUTTON') {
+    return;
+  }
+  const btn = e.target;
+  const color = btn.dataset.color;
+
+  refs.modalElement.style.backgroundColor = color;
+  showModal();
+});
+
+function showModal() {
+  refs.backdropElem.classList.remove('hidden');
+}
+
+function hideModal() {
+  refs.backdropElem.classList.add('hidden');
+}
+
+//!=========================================
+
+refs.backdropElem.addEventListener('click', e => {
+  if (e.target === e.currentTarget) {
+    hideModal();
+  }
+});
+
+//!=========================================
+function colorTemplate(obj) {
+  return `<li class="color-item">
+          <button data-color="${obj.hex}" class="color-body" style="background-color: ${obj.hex}"></button>
+          <div class="color-footer">
+            <div>HEX: ${obj.hex}</div>
+            <div>RGB: ${obj.rgb}</div>
+            <div></div>
+          </div>
+        </li>`;
+}
+
+function colorsTemplate(arr) {
+  return arr.map(colorTemplate).join('');
+}
+
+//!=========================================
 
 /* 
-nodeName
 <li class="color-item">
     <button class="color-body" style="background-color:...;"></button>
     <div class="color-footer">
