@@ -87,12 +87,12 @@ refs.backdropElem.addEventListener('click', e => {
 });
 
 //!=========================================
-function colorTemplate(obj) {
+function colorTemplate({ hex, rgb }) {
   return `<li class="color-item">
-          <button data-color="${obj.hex}" class="color-body" style="background-color: ${obj.hex}"></button>
+          <button data-color="${hex}" class="color-body" style="background-color: ${obj.hex}"></button>
           <div class="color-footer">
-            <div>HEX: ${obj.hex}</div>
-            <div>RGB: ${obj.rgb}</div>
+            <div>HEX: ${hex}</div>
+            <div>RGB: ${rgb}</div>
             <div></div>
           </div>
         </li>`;

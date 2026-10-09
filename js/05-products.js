@@ -56,10 +56,10 @@ container.addEventListener('click', e => {
 
 //!=========================================
 
-function itemTemplate(item) {
-  return `<li class="item" data-id="${item.id}">
-        <img src="${item.img}" alt="" />
-        <h2>${item.name}</h2>
+function itemTemplate({ id, img, name }) {
+  return `<li class="item" data-id="${id}">
+        <img src="${img}" alt="" />
+        <h2>${name}</h2>
       </li>`;
 }
 
@@ -69,13 +69,13 @@ function itemsTemplate(items) {
 
 //!=========================================
 
-function showModal(product) {
+function showModal({ img, name, price }) {
   const myModal = basicLightbox.create(
     `
     <div class="modal">
-       <img src="${product.img}"/>
-       <h1>${product.name}</h1>
-       <p>${product.price}</p>
+       <img src="${img}"/>
+       <h1>${name}</h1>
+       <p>${price}</p>
     </div>`,
   );
 
@@ -83,3 +83,5 @@ function showModal(product) {
 }
 
 //!=========================================
+
+products.filter(({ price }) => price > 500);
