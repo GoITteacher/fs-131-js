@@ -2,29 +2,43 @@
  * Деструктуризація об'єкта в циклі
  */
 
-const users = [
-  {
-    name: "Kate",
-  },
-  {
-    name: "Alex",
-  },
-  {
-    name: "Mark",
-  },
-];
+// const users = [
+//   {
+//     name: 'Kate',
+//     age: 25,
+//   },
+//   {
+//     name: 'Alex',
+//     age: 25,
+//   },
+//   {
+//     name: 'Mark',
+//     age: 25,
+//   },
+// ];
 
-/**
- * Без деструктуризації
- */
-const names = [];
+// for (const { name, age } of users) {
+//   console.log(name, age);
+// }
 
-for (const user of users) {
-  names.push(user.name);
-}
+//!=========================================
 
-console.log(names);
+// const user = {
+//   username: 'Jacob name',
+//   age: 25,
+//   city: 'Dnipro',
+//   phoneNumber: '-123424123',
+//   skills: {
+//     html: true,
+//     css: false,
+//     js: true,
+//   },
+// };
 
-/**
- * З деструктуризацією
- */
+// const values = Object.values(user);
+// const keys = Object.keys(user);
+// const arr = Object.entries(user);
+
+// for (const [key, value] of arr) {
+//   console.log(key, value);
+// }
