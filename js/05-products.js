@@ -1,16 +1,3 @@
-/**
- * Створи картки з товарами на основі масиву products,
- * приклад картки https://prnt.sc/KmgDlzqOIA3M
- *
- * Реалізуй делегування подій на колекції карток
- * Після кліку на картку повинно з'являтись модальне вікно
- * з детальною інформацією про продукт,
- * приклад модального вікна https://prnt.sc/vWNoCeZcw7ii
- *
- * Для реалізації модального вікна використай
- * бібліотеку basicLightbox (https://github.com/electerious/basicLightbox
- */
-
 const products = [
   {
     id: 1,
@@ -44,3 +31,55 @@ const products = [
 ];
 
 const container = document.querySelector('.products');
+
+//!=========================================
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const markup = itemsTemplate(products);
+//   container.innerHTML = markup;
+// });
+
+//!=========================================
+
+container.addEventListener('click', e => {
+  const liElem = e.target.closest('li');
+
+  if (!liElem) {
+    return;
+  }
+
+  const id = liElem.dataset.id;
+  const product = products.find(el => el.id == id);
+
+  showModal(product);
+});
+
+//!=========================================
+
+function itemTemplate(item) {
+  return `<li class="item" data-id="${item.id}">
+        <img src="${item.img}" alt="" />
+        <h2>${item.name}</h2>
+      </li>`;
+}
+
+function itemsTemplate(items) {
+  return items.map(itemTemplate).join('');
+}
+
+//!=========================================
+
+function showModal(product) {
+  const myModal = basicLightbox.create(
+    `
+    <div class="modal">
+       <img src="${product.img}"/>
+       <h1>${product.name}</h1>
+       <p>${product.price}</p>
+    </div>`,
+  );
+
+  myModal.show();
+}
+
+//!=========================================

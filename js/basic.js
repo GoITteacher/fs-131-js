@@ -1,0 +1,4 @@
+const basicLightbox = {
+  create() {},
+  isVisible() {},
+};
