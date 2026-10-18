@@ -1,13 +1,10 @@
 # План заняття
 
-1. Пограємо в Kahoot і обговоримо питання
-
 2. Розберемо:
 
 - terminal
 - node-js / CLI
 - npm
-
   - init
   - install
   - dependencies
