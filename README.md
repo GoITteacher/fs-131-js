@@ -1,6 +1,5 @@
 # План заняття
 
-1. Пограємо в Kahoot
 2. Познайомимось з поняттям асинхронності в JavaScript
 
 - Розберемо планування: window.setTimeout() и window.setInterval() (практика
