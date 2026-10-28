@@ -6,19 +6,38 @@ import './modules/pokemon';
 import './modules/instagram';
 import './modules/user';
 
-// ====================================
+//!=========================================
 
-/* function getPostsByUser(userId) {
-  const BASE_URL = 'https://jsonplaceholder.typicode.com';
-  const END_POINT = '/posts';
-  const PARAMS = `?userId=${userId}`;
-  const url = BASE_URL + END_POINT + PARAMS;
+// fetch('https://jsonplaceholder.typicode.com/users');
+// fetch('https://jsonplaceholder.typicode.com/users');
+// fetch('https://jsonplaceholder.typicode.com/users');
+// fetch('https://jsonplaceholder.typicode.com/users');
+// fetch('https://jsonplaceholder.typicode.com/users');
 
-  const options = {
-    headers: {
-      test_header: 'Volodka',
-    },
-  };
+//!=========================================
 
-  return fetch(url, options).then(res => res.json());
-} */
+// function searchNews(query, lang) {
+//   const BASE_URL = 'https://newsapi.org/v2';
+//   const END_POINT = '/everything';
+//   const params = new URLSearchParams({
+//     q: query,
+//     language: lang,
+//   });
+//   const url = `${BASE_URL}${END_POINT}?${params}`;
+
+//   const headers = {
+//     'X-Api-Key': 'c8747511a2c34730a83caaff4f3693e7',
+//   };
+
+//   return fetch(url, { headers }).then(res => res.json());
+// }
+
+// searchNews('Bitcoin', 'en').then(data => {
+//   console.log(data);
+// });
+
+// searchNews('Tesla', 'de').then(data => {
+//   console.log(data);
+// });
+
+//!=========================================

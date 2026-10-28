@@ -3,81 +3,146 @@ const refs = {
   cardInfo: document.querySelector('.js-ip-form'),
 };
 
+//!=========================================
+
 refs.formEl.addEventListener('submit', e => {
   e.preventDefault();
+  const formData = new FormData(e.target);
+  const userIp = formData.get('userip');
 
-  const ip = e.target.elements.userip.value;
-
-  getInfoByIp(ip).then(data => {
-    renderIp(data);
+  fetchIpInfo(userIp).then(data => {
+    const markup = ipTemplate(data);
+    refs.cardInfo.innerHTML = markup;
   });
 });
 
-function getInfoByIp(ip) {
-  const BASE_URL = 'https://ip-geolocation-ipwhois-io.p.rapidapi.com';
-  const END_POINT = '/json/';
-  const PARAMS = `?ip=${ip}`;
-  const url = BASE_URL + END_POINT + PARAMS;
+//!=========================================
 
-  const options = {
-    headers: {
-      'X-RapidAPI-Key': 'f6fe44fec7msh9f58de139869781p15408ajsn8e7b73b5d6b1',
-      'X-RapidAPI-Host': 'ip-geolocation-ipwhois-io.p.rapidapi.com',
-    },
-  };
+function fetchIpInfo(userIp) {
+  const BASE_URL = 'https://ipwho.is';
+  const END_POINT = `/${userIp}`;
+  const url = BASE_URL + END_POINT;
 
-  return fetch(url, options).then(res => res.json());
+  return fetch(url).then(res => res.json());
 }
 
-function renderIp({
-  country,
-  ip,
-  city,
-  country_flag,
-  currency,
-  timezone,
-  completed_requests,
-  currency_rates,
-  latitude,
-  longitude,
-}) {
+//!=========================================
+function ipTemplate(obj) {
+  const {
+    country,
+    ip,
+    city,
+    region,
+    flag,
+    currency,
+    timezone,
+    latitude,
+    longitude,
+    connection,
+  } = obj;
+
   const markup = `
     <div class="info-item">
-    <img
-      class="flag"
-      src="${country_flag}"
-      alt="Flag of ${country}"
-    />
-    <span class="info-label">Country:</span>
-    <span class="info-value">${country}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">IP Address: </span>
-    <span class="info-value">${ip}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">City: </span> <span class="info-value">${city}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">Timezone: </span>
-    <span class="info-value">${timezone}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">Currency:</span>
-    <span class="info-value">${currency}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">Currency Rate:</span>
-    <span class="info-value">${currency_rates}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">Completed Requests:</span>
-    <span class="info-value">${completed_requests}</span>
-  </div>
-  <div class="info-item">
-    <span class="info-label">Google Maps:</span>
-    <a href="https://www.google.com.ua/maps/@${latitude},${longitude},13.18z?entry=ttu"><span class="info-value">Тицяй</span></a>
-  </div>`;
+      ${
+        flag?.img
+          ? `
+            <img
+              class="flag"
+              src="${flag.img}"
+              alt="Flag of ${country}"
+            />
+          `
+          : ''
+      }
 
-  refs.cardInfo.innerHTML = markup;
+      <span class="info-label">Country:</span>
+      <span class="info-value">
+        ${country ?? 'Unknown'}
+      </span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">IP Address:</span>
+      <span class="info-value">
+        ${ip ?? 'Unknown'}
+      </span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">City:</span>
+      <span class="info-value">
+        ${city ?? 'Unknown'}
+      </span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">Region:</span>
+      <span class="info-value">
+        ${region ?? 'Unknown'}
+      </span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">Timezone:</span>
+      <span class="info-value">
+        ${timezone?.id ?? 'Unknown'}
+      </span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">UTC:</span>
+      <span class="info-value">
+        ${timezone?.utc ?? 'Unknown'}
+      </span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">Currency:</span>
+      <span class="info-value">
+        ${
+          currency
+            ? `${currency.name} (${currency.code}) ${currency.symbol}`
+            : 'Not available'
+        }
+      </span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">Currency Rate:</span>
+      <span class="info-value">
+        ${
+          currency?.exchange_rate != null
+            ? `${currency.exchange_rate} ${currency.code} / USD`
+            : 'Not available'
+        }
+      </span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">ISP:</span>
+      <span class="info-value">
+        ${connection?.isp ?? 'Unknown'}
+      </span>
+    </div>
+
+    <div class="info-item">
+      <span class="info-label">Google Maps:</span>
+
+      ${
+        latitude != null && longitude != null
+          ? `
+            <a
+              href="https://www.google.com/maps?q=${latitude},${longitude}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="info-value">Open map</span>
+            </a>
+          `
+          : '<span class="info-value">Unknown</span>'
+      }
+    </div>
+  `;
+
+  return markup;
 }
