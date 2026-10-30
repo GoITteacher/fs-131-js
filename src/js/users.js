@@ -1,12 +1,12 @@
-import {
-  deleteUser,
-  getUsers,
-  resetUser,
-  updateUser,
-} from './modules/usersAPI';
-import { createUser } from './modules/usersAPI';
+//!=========================================
 
-// ===================================================
+import {
+  createStudent,
+  deleteStudent,
+  getStudents,
+  resetStudent,
+} from './modules/studentsApi';
+
 const refs = {
   userListElem: document.querySelector('.js-user-list'),
   createUserForm: document.querySelector('.js-create-form'),
@@ -15,112 +15,133 @@ const refs = {
   deleteUserForm: document.querySelector('.js-delete-form'),
 };
 
-// ============================================================
+//!=========================================
 
-refs.createUserForm.addEventListener('submit', onCreateUser);
-refs.updateUserForm.addEventListener('submit', onUpdateUser);
-refs.resetUserForm.addEventListener('submit', onResetUser);
-refs.deleteUserForm.addEventListener('submit', onDeleteUser);
+document.addEventListener('DOMContentLoaded', () => {
+  getStudents().then(data => {
+    const markup = studentsTemplate(data.items);
+    refs.userListElem.innerHTML = markup;
+  });
+});
 
-function onCreateUser(e) {
+//!=========================================
+
+refs.createUserForm.addEventListener('submit', handleCreateStudent);
+refs.updateUserForm.addEventListener('submit', handleUpdateStudent);
+refs.resetUserForm.addEventListener('submit', handleResetStudent);
+refs.userListElem.addEventListener('click', handleDeleteStudent);
+
+//!=========================================
+
+function handleCreateStudent(e) {
   e.preventDefault();
+  const formData = new FormData(e.target);
 
-  const myData = {
-    email: e.target.elements.userEmail.value,
-    name: e.target.elements.userName.value,
-    phone: e.target.elements.userPhone.value,
-    img: `https://source.unsplash.com/720x1280/?random=${Math.random()}&girl,portret,celebrity`,
+  const data = {
+    firstName: formData.get('firstName'),
+    lastName: formData.get('lastName'),
+    major: formData.get('major'),
+    cohortYear: Number(formData.get('cohortYear')),
+    gpa: Number(formData.get('gpa')),
+    enrolled: Boolean(formData.get('enrolled')),
   };
 
-  createUser(myData).then(newUser => {
-    const markup = userTemplate(newUser);
+  createStudent(data).then(res => {
+    const markup = studentTemplate(res);
     refs.userListElem.insertAdjacentHTML('afterbegin', markup);
   });
 
   e.target.reset();
 }
-function onUpdateUser(e) {
+
+function handleUpdateStudent(e) {
   e.preventDefault();
+  const formData = new FormData(e.target);
+  const data = {};
+  e.target.reset();
+}
 
-  const myData = {};
-  const formData = new FormData(refs.updateUserForm);
+function handleResetStudent(e) {
+  e.preventDefault();
+  const formData = new FormData(e.target);
 
-  formData.forEach((value, key) => {
-    if (value) {
-      myData[key] = value;
-    }
-  });
+  const id = formData.get('userId');
 
-  updateUser(myData).then(updatedUser => {
-    const markup = userTemplate(updatedUser);
-    const oldUser = document.querySelector(`[data-id="${myData.id}"]`);
-    oldUser.insertAdjacentHTML('afterend', markup);
-    oldUser.remove();
+  const data = {
+    firstName: formData.get('firstName'),
+    lastName: formData.get('lastName'),
+    major: formData.get('major'),
+    cohortYear: Number(formData.get('cohortYear')),
+    gpa: Number(formData.get('gpa')),
+    enrolled: Boolean(formData.get('enrolled')),
+  };
+
+  resetStudent(id, data).then(res => {
+    const markup = studentTemplate(res);
+    const oldElem = document.querySelector(`[data-id="${id}"]`);
+    oldElem.outerHTML = markup;
   });
 
   e.target.reset();
 }
-function onResetUser(e) {
-  e.preventDefault();
 
-  const myData = {};
-  const formData = new FormData(refs.resetUserForm);
+function handleDeleteStudent(e) {
+  if (!e.target.classList.contains('user-delete-button')) {
+    return;
+  }
 
-  formData.forEach((value, key) => {
-    myData[key] = value;
+  const id = e.target.dataset.id;
+  const liElem = e.target.closest('li');
+
+  deleteStudent(id).then(() => {
+    liElem.remove();
   });
-
-  resetUser(myData).then(updatedUser => {
-    const markup = userTemplate(updatedUser);
-    const oldUser = document.querySelector(`[data-id="${myData.id}"]`);
-    oldUser.insertAdjacentHTML('afterend', markup);
-    oldUser.remove();
-  });
-
-  e.target.reset();
-}
-function onDeleteUser(e) {
-  e.preventDefault();
-
-  const id = e.target.elements.userId.value;
-
-  deleteUser(id)
-    .then(() => {
-      const oldUser = document.querySelector(`[data-id="${id}"]`);
-      oldUser.remove();
-    })
-    .catch(err => {
-      console.log(err);
-    });
-
-  e.target.reset();
 }
 
-// ============================================================
+//!=========================================
 
-getUsers().then(users => {
-  const markup = usersTemplate(users);
-  refs.userListElem.innerHTML = markup;
+function studentTemplate(item) {
+  return `<li class="card user-item" data-id="${item._id}">
+        <div class="user-photo-placeholder" aria-label="User photo placeholder">
+          <span>${item.firstName[0]}${item.lastName[0]}</span>
+        </div>
+        <div class="user-card-body">
+          <div class="user-card-header">
+            <div>
+              <h3 class="user-title">${item.firstName} ${item.lastName}</h3>
+              <p class="user-major">${item.major}</p>
+            </div>
+            <span class="user-status">Enrolled</span>
+          </div>
+
+          <div class="user-meta">
+            <p>
+              <span>Cohort</span>
+              <strong>${item.cohortYear}</strong>
+            </p>
+            <p>
+              <span>GPA</span>
+              <strong>${item.gpa}</strong>
+            </p>
+          </div>
+
+          <button data-id="${item._id}" class="btn button user-delete-button">Delete</button>
+        </div>
+      </li>`;
+}
+
+function studentsTemplate(items) {
+  return items.map(studentTemplate).join('');
+}
+
+//!=========================================
+
+//!=========================================
+
+let users;
+
+fetch().then(res => {
+  users = res;
 });
 
-// ============================================================
-
-function userTemplate({ id, name, img, email, phone }) {
-  return `<li class="card user-item" data-id="${id}">
-  <img
-    src="https://source.unsplash.com/720x1280/?random=${id}&girl,portret,celebrity"
-    alt="#"
-    class="user-avatar"
-  />
-  <h3 class="user-title">${name}</h3>
-  <p>Phone: ${email}</p>
-  <p>Email: ${phone}</p>
-  <button class="btn button">DELETE</button>
-</li>`;
-}
-
-function usersTemplate(arr) {
-  return arr.map(userTemplate).join('\n\n\n\n');
-}
-
-// =======================================
+console.log(users);
