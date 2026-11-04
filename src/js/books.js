@@ -22,14 +22,10 @@ refs.resetFormElem.addEventListener('submit', onResetFormSubmit);
 refs.deleteFormElem.addEventListener('submit', onDeleteFormSubmit);
 
 //!=========================================
-document.addEventListener('DOMContentLoaded', () => {
-  getBooks()
-    .then(data => {
-      renderBooks(data.reverse());
-    })
-    .catch(err => {
-      console.log(err);
-    });
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const res = getBooks();
+  console.log(res);
 });
 
 //!=========================================

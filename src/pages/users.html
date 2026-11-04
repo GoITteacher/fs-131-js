@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -18,13 +18,20 @@
     <div class="header horizont-box">
       <form class="card form-inline search-form js-create-form">
         <div class="form-group">
-          Name: <input type="text" name="userName" />
+          First name: <input type="text" name="firstName" />
         </div>
         <div class="form-group">
-          Phone: <input type="text" name="userPhone" />
+          Last name: <input type="text" name="lastName" />
+        </div>
+        <div class="form-group">Major: <input type="text" name="major" /></div>
+        <div class="form-group">
+          Cohort year: <input type="number" name="cohortYear" />
         </div>
         <div class="form-group">
-          Email: <input type="text" name="userEmail" />
+          GPA: <input type="number" name="gpa" step="0.01" />
+        </div>
+        <div class="form-group">
+          Enrolled: <input type="checkbox" name="enrolled" />
         </div>
 
         <button type="submit" class="btn btn-primary">Створити</button>
@@ -33,13 +40,20 @@
       <form class="card form-inline search-form js-update-form">
         <div class="form-group">Id: <input type="text" name="userId" /></div>
         <div class="form-group">
-          Name: <input type="text" name="userName" />
+          First name: <input type="text" name="firstName" />
         </div>
         <div class="form-group">
-          Phone: <input type="text" name="userPhone" />
+          Last name: <input type="text" name="lastName" />
+        </div>
+        <div class="form-group">Major: <input type="text" name="major" /></div>
+        <div class="form-group">
+          Cohort year: <input type="number" name="cohortYear" />
         </div>
         <div class="form-group">
-          Email: <input type="text" name="userEmail" />
+          GPA: <input type="number" name="gpa" step="0.01" />
+        </div>
+        <div class="form-group">
+          Enrolled: <input type="checkbox" name="enrolled" />
         </div>
 
         <button type="submit" class="btn btn-primary">Оновити</button>
@@ -48,35 +62,111 @@
       <form class="card form-inline search-form js-reset-form">
         <div class="form-group">Id: <input type="text" name="userId" /></div>
         <div class="form-group">
-          Name: <input type="text" name="userName" />
+          First name: <input type="text" name="firstName" />
         </div>
         <div class="form-group">
-          Phone: <input type="text" name="userPhone" />
+          Last name: <input type="text" name="lastName" />
+        </div>
+        <div class="form-group">Major: <input type="text" name="major" /></div>
+        <div class="form-group">
+          Cohort year: <input type="number" name="cohortYear" />
         </div>
         <div class="form-group">
-          Email: <input type="text" name="userEmail" />
+          GPA: <input type="number" name="gpa" step="0.01" />
+        </div>
+        <div class="form-group">
+          Enrolled: <input type="checkbox" name="enrolled" />
         </div>
 
         <button type="submit" class="btn btn-primary">Перезаписати</button>
       </form>
-
-      <form class="card form-inline search-form js-delete-form">
-        <div class="form-group">Id: <input type="text" name="userId" /></div>
-        <button type="submit" class="btn btn-primary">Видалити</button>
-      </form>
     </div>
+
+    <p class="hidden js-loading">LOADING STUDENTS ...</p>
 
     <ul class="news-list js-user-list">
       <li class="card user-item" data-id="${id}">
-        <img
-          src="https://source.unsplash.com/1280x720/?random=431&book"
-          alt="#"
-          class="user-avatar"
-        />
-        <h3 class="user-title">Real Full Name Real Full Name</h3>
-        <p>Email: Test Email</p>
-        <p>Phone: +38099123123</p>
-        <button class="btn button">DELETE</button>
+        <div class="user-photo-placeholder" aria-label="User photo placeholder">
+          <span>FL</span>
+        </div>
+        <div class="user-card-body">
+          <div class="user-card-header">
+            <div>
+              <h3 class="user-title">First Name Last Name</h3>
+              <p class="user-major">Computer Science</p>
+            </div>
+            <span class="user-status">Enrolled</span>
+          </div>
+
+          <div class="user-meta">
+            <p>
+              <span>Cohort</span>
+              <strong>2026</strong>
+            </p>
+            <p>
+              <span>GPA</span>
+              <strong>4.0</strong>
+            </p>
+          </div>
+
+          <button class="btn button user-delete-button">Delete</button>
+        </div>
+      </li>
+
+      <li class="card user-item" data-id="${id}">
+        <div class="user-photo-placeholder" aria-label="User photo placeholder">
+          <span>FL</span>
+        </div>
+        <div class="user-card-body">
+          <div class="user-card-header">
+            <div>
+              <h3 class="user-title">First Name Last Name</h3>
+              <p class="user-major">Computer Science</p>
+            </div>
+            <span class="user-status">Enrolled</span>
+          </div>
+
+          <div class="user-meta">
+            <p>
+              <span>Cohort</span>
+              <strong>2026</strong>
+            </p>
+            <p>
+              <span>GPA</span>
+              <strong>4.0</strong>
+            </p>
+          </div>
+
+          <button class="btn button user-delete-button">Delete</button>
+        </div>
+      </li>
+
+      <li class="card user-item" data-id="${id}">
+        <div class="user-photo-placeholder" aria-label="User photo placeholder">
+          <span>FL</span>
+        </div>
+        <div class="user-card-body">
+          <div class="user-card-header">
+            <div>
+              <h3 class="user-title">First Name Last Name</h3>
+              <p class="user-major">Computer Science</p>
+            </div>
+            <span class="user-status">Enrolled</span>
+          </div>
+
+          <div class="user-meta">
+            <p>
+              <span>Cohort</span>
+              <strong>2026</strong>
+            </p>
+            <p>
+              <span>GPA</span>
+              <strong>4.0</strong>
+            </p>
+          </div>
+
+          <button class="btn button user-delete-button">Delete</button>
+        </div>
       </li>
     </ul>
 

@@ -1,31 +1,165 @@
 //!=========================================
+
+import {
+  createStudent,
+  deleteStudent,
+  getStudents,
+  resetStudent,
+} from './modules/studentsApi';
+
 const refs = {
   userListElem: document.querySelector('.js-user-list'),
   createUserForm: document.querySelector('.js-create-form'),
   updateUserForm: document.querySelector('.js-update-form'),
   resetUserForm: document.querySelector('.js-reset-form'),
   deleteUserForm: document.querySelector('.js-delete-form'),
+  loadingElem: document.querySelector('.js-loading'),
 };
 
 //!=========================================
 
-function templateUser({ id, name, email, phone, img }) {
-  return `
-  <li class="card user-item" data-id="${id}">
-  <img
-    src="${img}"
-    alt="#"
-    class="user-avatar"
-  />
-  <h3 class="user-title">${name}</h3>
-  <p>Phone: ${email}</p>
-  <p>Email: ${phone}</p>
-  <button class="btn button">DELETE</button>
-</li>`;
+document.addEventListener('DOMContentLoaded', async () => {
+  showLoader();
+
+  try {
+    const data = await getStudents();
+    const markup = studentsTemplate(data.items);
+    refs.userListElem.innerHTML = markup;
+  } catch (err) {
+    err.message;
+  }
+
+  hideLoader();
+});
+
+//!=========================================
+
+refs.createUserForm.addEventListener('submit', handleCreateStudent);
+refs.updateUserForm.addEventListener('submit', handleUpdateStudent);
+refs.resetUserForm.addEventListener('submit', handleResetStudent);
+refs.userListElem.addEventListener('click', handleDeleteStudent);
+
+//!=========================================
+
+async function handleCreateStudent(e) {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+
+  const data = {
+    firstName: formData.get('firstName'),
+    lastName: formData.get('lastName'),
+    major: formData.get('major'),
+    cohortYear: Number(formData.get('cohortYear')),
+    gpa: Number(formData.get('gpa')),
+    enrolled: Boolean(formData.get('enrolled')),
+  };
+
+  showLoader();
+  try {
+    const res = await createStudent(data);
+    const markup = studentTemplate(res);
+    refs.userListElem.insertAdjacentHTML('afterbegin', markup);
+  } catch (err) {
+    console.log(err);
+  }
+  hideLoader();
+
+  e.target.reset();
 }
 
-function templateUsers(users) {
-  return users.map(templateUser).join('');
+function handleUpdateStudent(e) {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const data = {};
+  e.target.reset();
 }
 
+async function handleResetStudent(e) {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+
+  const id = formData.get('userId');
+
+  const data = {
+    firstName: formData.get('firstName'),
+    lastName: formData.get('lastName'),
+    major: formData.get('major'),
+    cohortYear: Number(formData.get('cohortYear')),
+    gpa: Number(formData.get('gpa')),
+    enrolled: Boolean(formData.get('enrolled')),
+  };
+
+  try {
+    const res = await resetStudent(id, data);
+    const markup = studentTemplate(res);
+    const oldElem = document.querySelector(`[data-id="${id}"]`);
+    oldElem.outerHTML = markup;
+  } catch (err) {
+    console.log(err);
+  }
+
+  e.target.reset();
+}
+
+async function handleDeleteStudent(e) {
+  if (!e.target.classList.contains('user-delete-button')) {
+    return;
+  }
+
+  const id = e.target.dataset.id;
+  const liElem = e.target.closest('li');
+
+  showLoader();
+  try {
+    await deleteStudent(id);
+    liElem.remove();
+  } catch (err) {
+    console.log(err);
+  }
+  hideLoader();
+}
+
+//!=========================================
+
+function studentTemplate(item) {
+  return `<li class="card user-item" data-id="${item._id}">
+        <div class="user-photo-placeholder" aria-label="User photo placeholder">
+          <span>${item.firstName[0]}${item.lastName[0]}</span>
+        </div>
+        <div class="user-card-body">
+          <div class="user-card-header">
+            <div>
+              <h3 class="user-title">${item.firstName} ${item.lastName}</h3>
+              <p class="user-major">${item.major}</p>
+            </div>
+            <span class="user-status">Enrolled</span>
+          </div>
+
+          <div class="user-meta">
+            <p>
+              <span>Cohort</span>
+              <strong>${item.cohortYear}</strong>
+            </p>
+            <p>
+              <span>GPA</span>
+              <strong>${item.gpa}</strong>
+            </p>
+          </div>
+
+          <button data-id="${item._id}" class="btn button user-delete-button">Delete</button>
+        </div>
+      </li>`;
+}
+
+function studentsTemplate(items) {
+  return items.map(studentTemplate).join('');
+}
+
+function showLoader() {
+  refs.loadingElem.classList.remove('hidden');
+}
+
+function hideLoader() {
+  refs.loadingElem.classList.add('hidden');
+}
 //!=========================================

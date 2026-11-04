@@ -1,17 +1,155 @@
-.user-item {
-  width: 250px;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 15px;
-  height: 370px;
-  gap: 5px;
+.header.horizont-box {
+  width: min(1180px, 100%);
+  align-items: stretch;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
-.user-avatar {
+.header .search-form {
+  position: relative;
+  flex: 1 1 260px;
+  min-width: 260px;
+  max-width: 360px;
+  height: auto;
+  margin: 0;
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 12px;
+  border: 1px solid #d8dee8;
+  border-top: 5px solid #5f7c8a;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 14px 30px rgba(29, 44, 64, 0.1);
+  overflow: visible;
+}
+
+.header .search-form::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.header .js-create-form {
+  border-top-color: #2f9e73;
+}
+
+.header .js-update-form {
+  border-top-color: #3b73d9;
+}
+
+.header .js-reset-form {
+  border-top-color: #d9902f;
+}
+
+.header .js-delete-form {
+  border-top-color: #d94f4f;
+}
+
+.header .form-group {
   width: 100%;
-  height: 200px;
-  border: 1px solid black;
-  margin-bottom: 10px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(96px, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: 10px;
+  color: #445064;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.header .js-delete-form .form-group {
+  grid-template-columns: 52px minmax(0, 1fr);
+}
+
+.header .form-group input {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid #c8d0dc;
+  border-radius: 8px;
+  background: #f9fbfd;
+  color: #1f2937;
+  font: inherit;
+  font-weight: 400;
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+.header .form-group input:focus {
+  border-color: #3b73d9;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 115, 217, 0.16);
+}
+
+.header .form-group input[type='checkbox'] {
+  justify-self: start;
+  width: 22px;
+  min-height: 22px;
+  accent-color: #2f9e73;
+  cursor: pointer;
+}
+
+.header .btn-primary {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 6px;
+  border: 0;
+  border-radius: 8px;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0;
+  box-shadow: none;
+  transition:
+    transform 160ms ease,
+    filter 160ms ease;
+}
+
+.header .btn-primary:hover,
+.header .btn-primary:focus {
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+}
+
+.header .btn-primary:active {
+  transform: translateY(0);
+}
+
+.js-create-form .btn-primary {
+  background: #2f9e73;
+}
+
+.js-update-form .btn-primary {
+  background: #3b73d9;
+}
+
+.js-reset-form .btn-primary {
+  background: #d9902f;
+}
+
+.js-delete-form .btn-primary {
+  background: #d94f4f;
+}
+
+.user-item {
+  width: min(360px, 100%);
+  min-height: 0;
+  margin: 10px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  border: 1px solid #dde3ec;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(29, 44, 64, 0.12);
+  overflow: hidden;
 }
 
 .btn {
@@ -19,20 +157,150 @@
   background-color: rgb(215, 215, 215);
 }
 
+.user-photo-placeholder {
+  min-height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(145deg, #e8eef6, #cdd8e6);
+  border-right: 1px solid #dde3ec;
+}
+
+.user-photo-placeholder span {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #4d6278;
+  font-size: 20px;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(58, 78, 102, 0.18);
+}
+
+.user-card-body {
+  min-width: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.user-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
 .user-title {
-  margin: 10px 0;
-  text-transform: uppercase;
+  margin: 0;
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: none;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.user-item p {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+.user-major {
+  margin: 4px 0 0;
+  color: #627084;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.user-status {
+  flex: 0 0 auto;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #e8f7ef;
+  color: #227a56;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.user-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.user-meta p {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #e3e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.user-meta span {
+  display: block;
+  color: #7a8798;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.user-meta strong {
+  display: block;
+  margin-top: 2px;
+  color: #1f2937;
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+.user-delete-button {
+  margin-top: auto;
+  min-height: 38px;
+  border: 0;
+  border-radius: 8px;
+  background: #f0f3f8;
+  color: #b42323;
+  font-weight: 800;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.user-delete-button:hover,
+.user-delete-button:focus {
+  background: #d94f4f;
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .user-item * {
-  margin: 0;
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .header.horizont-box {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .header .search-form {
+    max-width: none;
+  }
+
+  .header .form-group,
+  .header .js-delete-form .form-group {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .user-item {
+    grid-template-columns: 1fr;
+  }
+
+  .user-photo-placeholder {
+    min-height: 150px;
+    border-right: 0;
+    border-bottom: 1px solid #dde3ec;
+  }
 }
